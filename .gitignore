@@ -3,3 +3,8 @@
 ################################################################################
 
 /PureHololens2Hands/Library
+/PureHololens2Hands/Logs
+/PureHololens2Hands/Temp
+/PureHololens2Hands/Packages
+*.csproj
+*.sln
