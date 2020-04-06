@@ -7,4 +7,4 @@ Here it is running:
 
 ![](GifForReadMe.gif)
 
-The hands only work in Unity2018.4 with the platform set to Universal Windows Platform. You can see your hand joints working on builds on a Hololens 2 device, or in the editor through the XR -> Holographic Emulation -> Remote To Device system (which is the system I adore and highly recommend.)
+The hands work in Unity2018.4 with the platform set to Universal Windows Platform. You can see your hand joints working on builds on a Hololens 2 device, or in the editor through the XR -> Holographic Emulation -> Remote To Device system (which is the system I adore and highly recommend.)
