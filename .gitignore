@@ -8,3 +8,5 @@
 /PureHololens2Hands/Packages
 *.csproj
 *.sln
+/PureHololens2Hands/obj
+*.vs/

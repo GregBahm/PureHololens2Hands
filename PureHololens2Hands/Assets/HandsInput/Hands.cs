@@ -55,8 +55,10 @@ public class Hands : MonoBehaviour
     };
     private readonly JointPose[] jointPoses = new JointPose[jointIndices.Length];
 
+    public HandProxy LeftHandProxy => this.leftHandProxy;
     [SerializeField]
     private HandProxy leftHandProxy;
+    public HandProxy RightHandProxy => this.rightHandProxy;
     [SerializeField]
     private HandProxy rightHandProxy;
 
