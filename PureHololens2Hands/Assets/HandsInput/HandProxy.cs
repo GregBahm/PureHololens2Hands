@@ -95,6 +95,10 @@ public class HandProxy
             return allJoints;
         }
     }
+
+    public Vector3 ModelFingerPointing = new Vector3(0, 0, 0);
+    public Vector3 ModelPalmFacing = new Vector3(0, 0, 0);
+
     private Transform[] allJoints;
     private Transform[] GetAllJoints()
     {

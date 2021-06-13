@@ -167,18 +167,25 @@ public class Hands : MonoBehaviour
         }
     }
 
-    private void ApplyTransforms(HandProxy handProxies, JointPose[] jointPoses)
+    private void ApplyTransforms(HandProxy hand, JointPose[] jointPoses)
     {
         for (int i = 0; i < jointPoses.Length; i++)
         {
-            ApplyPose(handProxies.AllJoints[i], jointPoses[i]);
+            ApplyPose(hand.AllJoints[i], jointPoses[i], hand);
         }
     }
 
-    private void ApplyPose(Transform transform, JointPose jointPose)
+    private void ApplyPose(Transform transform, JointPose jointPose, HandProxy hand)
     {
-        transform.position = SystemVector3ToUnity(jointPose.Position);
-        transform.rotation = SystemQuaternionToUnity(jointPose.Orientation);
+        if(transform != null)
+        {
+            transform.position = SystemVector3ToUnity(jointPose.Position);
+            transform.rotation = SystemQuaternionToUnity(jointPose.Orientation) * Reorientation(hand);
+        }
+    }
+    private Quaternion Reorientation(HandProxy hand)
+    {
+        return Quaternion.Inverse(Quaternion.LookRotation(hand.ModelFingerPointing, -hand.ModelPalmFacing));
     }
 
     public static UnityEngine.Vector3 SystemVector3ToUnity(System.Numerics.Vector3 vector)
