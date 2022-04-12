@@ -6,6 +6,7 @@
 /PureHololens2Hands/Logs
 /PureHololens2Hands/Temp
 /PureHololens2Hands/Packages
+/PureHololens2Hands/UserSettings
 *.csproj
 *.sln
 /PureHololens2Hands/obj
