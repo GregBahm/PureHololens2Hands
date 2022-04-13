@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GregHand : MonoBehaviour
+public class RiggedHand : MonoBehaviour
 {
     [SerializeField]
     private bool isLeft;
@@ -12,8 +12,8 @@ public class GregHand : MonoBehaviour
     [SerializeField]
     private HandProxy handProxy;
 
-    private readonly HandJointLocation[] HandJointLocations = new HandJointLocation[HandTracker.JointCount];
-    
+    private readonly HandJointLocation[] handJointLocations = new HandJointLocation[HandTracker.JointCount];
+
     private void Update()
     {
         UpdateHandJoints(isLeft ? HandTracker.Left : HandTracker.Right, FrameTime.OnUpdate);
@@ -21,17 +21,17 @@ public class GregHand : MonoBehaviour
     
     private void UpdateHandJoints(HandTracker handTracker, FrameTime frameTime)
     {
-        if (handTracker.TryLocateHandJoints(frameTime, HandJointLocations))
+        if (handTracker.TryLocateHandJoints(frameTime, handJointLocations))
         {
-            //Apply(handProxy.Palm, HandJoint.Palm);
-            Apply(handProxy.Wrist, HandJoint.Wrist);
-            ApplyWrist(handProxy.ThumbMetacarpal, HandJoint.ThumbMetacarpal);
+            ApplyWrist(handProxy.Wrist, HandJoint.Wrist);
+            Apply(handProxy.ThumbMetacarpal, HandJoint.ThumbMetacarpal);
             Apply(handProxy.ThumbProximal, HandJoint.ThumbProximal);
             Apply(handProxy.ThumbDistal, HandJoint.ThumbDistal);
             Apply(handProxy.ThumbTip, HandJoint.ThumbTip);
             Apply(handProxy.IndexMetacarpal, HandJoint.IndexMetacarpal);
             Apply(handProxy.IndexProximal, HandJoint.IndexProximal);
             Apply(handProxy.IndexIntermediate, HandJoint.IndexIntermediate);
+            Apply(handProxy.IndexDistal, HandJoint.IndexDistal);
             Apply(handProxy.IndexTip, HandJoint.IndexTip);
             Apply(handProxy.MiddleMetacarpal, HandJoint.MiddleMetacarpal);
             Apply(handProxy.MiddleProximal, HandJoint.MiddleProximal);
@@ -59,11 +59,9 @@ public class GregHand : MonoBehaviour
     {
         if (jointTransform == null)
             return;
-        HandJointLocation location = HandJointLocations[(int)joint];
+        HandJointLocation location = handJointLocations[(int)joint];
         Quaternion rot = location.Pose.rotation * Reorientation(handProxy);
-        rot *= Quaternion.Euler(handProxy.WristRotationOffset);
         Vector3 pos = location.Pose.position;
-        pos += handProxy.Wrist.rotation * handProxy.WristPositionOffset;
         jointTransform.SetPositionAndRotation(pos, rot);
     }
 
@@ -71,10 +69,9 @@ public class GregHand : MonoBehaviour
     {
         if (jointTransform == null)
             return;
-        HandJointLocation location = HandJointLocations[(int)joint];
+        HandJointLocation location = handJointLocations[(int)joint];
         Quaternion rot = location.Pose.rotation * Reorientation(handProxy);
-        jointTransform.SetPositionAndRotation(location.Pose.position, rot);
-        //jointTransform.localScale = Vector3.one * location.Radius;
+        jointTransform.rotation = rot;
     }
 
     private Quaternion Reorientation(HandProxy hand)
