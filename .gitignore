@@ -11,3 +11,4 @@
 *.sln
 /PureHololens2Hands/obj
 *.vs/
+PureHololens2Hands/UserSettings
