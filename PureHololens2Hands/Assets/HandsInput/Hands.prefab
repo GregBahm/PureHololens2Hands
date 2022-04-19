@@ -1187,7 +1187,7 @@ MonoBehaviour:
     ringIntermediate: {fileID: 7662469292678824943}
     ringDistal: {fileID: 6345683618411842383}
     ringTip: {fileID: 5510975739403457844}
-    littleMetacarpal: {fileID: 8088724408924793721}
+    littleMetacarpal: {fileID: 0}
     littleProximal: {fileID: 8736936039046416533}
     littleIntermediate: {fileID: 1676786706893960009}
     littleDistal: {fileID: 4381333214467989056}
@@ -1262,10 +1262,10 @@ MonoBehaviour:
     ringIntermediate: {fileID: 7052059958366296453}
     ringDistal: {fileID: 3926366360637561301}
     ringTip: {fileID: 436567056524433128}
-    littleMetacarpal: {fileID: 8048140456314159835}
+    littleMetacarpal: {fileID: 0}
     littleProximal: {fileID: 1065301608111726176}
     littleIntermediate: {fileID: 6389519825484463654}
-    littleDistal: {fileID: 8959299442937406038}
+    littleDistal: {fileID: 8473311361769429592}
     littleTip: {fileID: 0}
     ModelFingerPointing: {x: 1, y: 0, z: 0}
     ModelPalmFacing: {x: 0, y: -1, z: 0}
